@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Edmilson Manhiça | Portfólio</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <!-- Ícones do Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+    <style>
+        :root {
+            --bg-dark: #041927;
+            --blue-light: #00BFFF;
+            --text-white: #ffffff;
+            --text-gray: #d0d0d0;
+            --neon-blue: #00ffff;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-white);
+            scroll-behavior: smooth;
+        }
+
+        a {
+            color: var(--neon-blue);
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: var(--text-white);
+        }
+
+        .navbar {
+            background-color: transparent;
+        }
+
+        .navbar-nav .nav-link {
+            color: white;
+            margin-right: 15px;
+        }
+
+        .navbar-nav .nav-link:hover {
+            color: var(--blue-light);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 80vh;
+            padding: 100px 20px;
+            text-align: center;
+            background-color: #01111a;
+            background-size: cover;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+            /* importante para esconder overflow da animação */
+
+            /* Responsivo para telas menores */
+            @media (max-width: 768px) {
+                .hero-title {
+                    font-size: 2.2rem;
+                }
+
+                .typing-text {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        /* Overlay escuro */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: url(backmy.png) no-repeat center center;
+            background-size: cover;
+            filter: brightness(0.5);
+            /* escurece a imagem */
+            animation: bgZoom 5s ease-in-out 1 forwards;
+
+
+            /* Responsivo para telas menores */
+            @media (max-width: 768px) {
+                .hero-title {
+                    font-size: 2.2rem;
+                }
+
+                .typing-text {
+                    font-size: 1rem;
+                }
+            }
+        }
+
+        /* Animação de zoom na imagem */
+        @keyframes bgZoom {
+            0% {
+                transform: scale(0, 5);
+            }
+
+            100% {
+                transform: scale(1.09);
+                /* zoom sutil */
+            }
+        }
+
+
+        .section-title {
+            margin-bottom: 40px;
+            color: var(--blue-light);
+        }
+
+        .card {
+            background-color: #052334;
+            border: none;
+            color: var(--text-white);
+        }
+
+        .social-icons a {
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+        }
+
+        footer {
+            background-color: #03131f;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .btn-cta {
+            background-color: var(--blue-light);
+            color: var(--bg-dark);
+            border: none;
+        }
+
+        .btn-cta:hover {
+            background-color: var(--neon-blue);
+            color: var(--bg-dark);
+        }
+
+        /* Estilo para o título */
+        .hero-title {
+            font-weight: 900;
+            font-size: 3rem;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        /* Transição suave do título */
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Animação de digitação */
+        .typing-text {
+            font-size: 1.25rem;
+            white-space: nowrap;
+            overflow: hidden;
+            border-right: 2px solid var(--blue-light);
+            width: 0;
+            animation: typing 4s steps(60, end) forwards;
+            animation-delay: 1s;
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+
+            to {
+                width: 100%;
+            }
+        }
+
+        /* Responsivo para telas menores */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .typing-text {
+                font-size: 1rem;
+            }
+        }
+
+
+        .carousel-item img {
+            max-height: 100vh;
+            object-fit: cover;
+        }
+
+        .carousel-caption {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+       /* mim */
+.sobre-img {
+    max-width: 100%;
+    height: auto;
+    position: absolute;
+    bottom: -450px; /* entra na section abaixo */
+    right: 0;       /* coloca na direita */
+    left: auto;     /* anula o left anterior */
+    z-index: 2;
+    transform: translateY(-20%);
+}
+
+@media (max-width: 768px) {
+    .sobre-img {
+        position: relative;
+        bottom: 0;
+        transform: none;
+        margin-bottom: 20px;
+        right: auto;
+        left: auto;
+    }
+}
+
+
+/*Skills style css*/
+  /* Linha vertical neon */
+  #skills .skills-list::before {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, #00ffff, #0077aa);
+    box-shadow: 0 0 10px #00ffff, 0 0 20px #0077aa;
+    animation: neonGlow 2.5s ease-in-out infinite alternate;
+    border-radius: 2px;
+  }
+
+  /* Bolinha neon animada */
+  .skill-bullet {
+    position: absolute;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    background: #00ffff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px #00ffff, 0 0 10px #0077aa;
+    animation: pulse 2.5s ease-in-out infinite alternate;
+    top: 10px;
+  }
+
+  /* Cada skill item */
+  .skill-item {
+    position: relative;
+    padding-left: 40px;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-size: 1.1rem;
+  }
+
+  /* Barra da skill */
+  .skill-bar {
+    background: #01445f;
+    height: 10px;
+    border-radius: 5px;
+    margin-top: 8px;
+    position: relative;
+    width: 100%;
+    max-width: 250px;
+  }
+
+  /* Preenchimento da skill */
+  .skill-fill {
+    background: linear-gradient(90deg, #00ffff, #0077aa);
+    height: 100%;
+    border-radius: 5px;
+    box-shadow: 0 0 10px #00ffff, 0 0 15px #0077aa;
+  }
+
+  /* Porcentagem ao lado */
+  .skill-percent {
+    margin-left: 10px;
+    font-weight: 700;
+    color: #00ffff;
+  }
+
+  /* Pulse animation */
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 0 5px #00ffff, 0 0 10px #0077aa;
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 15px #00ffff, 0 0 30px #0077aa;
+      transform: scale(1.2);
+    }
+  }
+
+  /* Neon glow animation */
+  @keyframes neonGlow {
+    0%, 100% {
+      box-shadow: 0 0 10px #00ffff, 0 0 20px #0077aa;
+    }
+    50% {
+      box-shadow: 0 0 20px #00ffff, 0 0 40px #0077aa;
+    }
+  }
+
+  /* Responsividade para telas pequenas */
+  @media (max-width: 767px) {
+    .skill-bar {
+      max-width: 100%;
+    }
+  }
+
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#inicio">Edmilson</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#sobr">Sobre Mim</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#servico">Serviços</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#portfolio">Portfólio/Projetos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contato">Contato</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+
+    <section class="hero d-flex align-items-center" id="inicio">
+        <div class="container text-start">
+            <h1 class="hero-title">Meu Portfólio</h1>
+            <p class="hero-subtitle typing-text" data-text="Transformo ideias em interfaces modernas."></p>
+        </div>
+    </section>
+
+
+    <!-- Skills -->
+<section id="skills" class="py-5" style="background-color: #011520;">
+  <div class="container text-center text-white">
+    <h2 class="section-title mb-5">Minhas Ferramentas</h2>
+
+    <div class="row justify-content-center align-items-center gy-4">
+      <!-- Design Gráfico -->
+      <div class="col-6 col-md-3">
+        <i class="bi bi-brush fs-1 text-info mb-2"></i>
+        <h6>Illustrator</h6>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-image fs-1 text-info mb-2"></i>
+        <h6>Photoshop</h6>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-journal-text fs-1 text-info mb-2"></i>
+        <h6>InDesign</h6>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-vector-pen fs-1 text-info mb-2"></i>
+        <h6>Figma</h6>
+      </div>
+
+      <!-- Desenvolvimento Web -->
+      <div class="col-6 col-md-3">
+        <i class="bi bi-filetype-html fs-1 text-info mb-2"></i>
+        <h6>HTML</h6>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-filetype-css fs-1 text-info mb-2"></i>
+        <h6>CSS</h6>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-filetype-js fs-1 text-info mb-2"></i>
+        <h6>JavaScript</h6>
+      </div>
+      <div class="col-6 col-md-3">
+        <i class="bi bi-bootstrap fs-1 text-info mb-2"></i>
+        <h6>Bootstrap</h6>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Serviços -->
+    <section id="servico" class="py-5" style="background-color: #052334;">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Serviços</h2>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="card p-4 mb-4 bg-dark text-white border-0">
+                        <div class="mb-3">
+                            <i class="bi bi-laptop fs-1 text-info"></i>
+                        </div>
+                        <h5 class="fw-bold">Web Design</h5>
+                        <p>Criação de interfaces bonitas, modernas e responsivas para websites.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card p-4 mb-4 bg-dark text-white border-0">
+                        <div class="mb-3">
+                            <i class="bi bi-code-slash fs-1 text-info"></i>
+                        </div>
+                        <h5 class="fw-bold">Front-End Development</h5>
+                        <p>Desenvolvimento de sites em HTML, CSS, JS e Bootstrap com boas práticas.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="card p-4 mb-4 bg-dark text-white border-0">
+                        <div class="mb-3">
+                            <i class="bi bi-brush fs-1 text-info"></i>
+                        </div>
+                        <h5 class="fw-bold">Design Gráfico</h5>
+                        <p>Criação de logotipos, identidades visuais, posts e materiais gráficos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- Sobre Mim -->
+<section id="sobr" class="py-5 position-relative" style="overflow: visible;">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Texto à esquerda -->
+        <div class="col-md-7">
+          <div class="mb-3">
+            <i class="bi bi-person-circle fs-1 text-info"></i>
+          </div>
+          <h2 class="section-title">Sobre Mim</h2>
+          <p>
+            Sou <b>Edmilson Manhiça</b> tenho 21 anos de idade, sou um jovem profissional apaixonado por design e desenvolvimento, com 3 anos de experiência na área de design gráfico. Durante esse tempo, tive a oportunidade de trabalhar em diversos projetos que me permitiram aprimorar minhas habilidades criativas, meu olhar para os detalhes e minha capacidade de comunicar ideias visualmente de forma eficaz.
+
+            Além do design, estou trilhando meu caminho como desenvolvedor front-end, explorando as tecnologias web como <u> HTML, CSS, JavaScript</u> e frameworks modernos. Ainda estou estudando na escola, o que demonstra minha dedicação em conciliar os estudos com a prática profissional. Essa combinação entre teoria e prática tem me ajudado a crescer rapidamente no mercado e a entender a importância de estar sempre aprendendo.
+            
+            Sou movido pela vontade de criar soluções visuais e funcionais que impactem positivamente as pessoas e negócios. Busco constantemente novos desafios para ampliar meu conhecimento e construir uma carreira sólida tanto no design quanto no desenvolvimento. Acredito que, com disciplina e paixão, posso alcançar grandes resultados e contribuir de forma significativa para os projetos em que me envolver.
+            
+            
+          </p>
+        </div>
+  
+        <!-- Imagem à direita -->
+        <div class="col-md-5 position-relative">
+          <img src="mim.png" alt="Edmilson Manhiça" class="img-fluid sobre-img direita">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Missão, Valores e Compromisso -->
+<!-- Missão, Valores e Compromisso -->
+<section id="missao-valores" class="py-5" style="background-color: #052334;">
+    <div class="container">
+      <h2 class="section-title text-center text-white fw-bold mb-5"></h2>
+      <div class="row text-center text-white">
+        
+        <!-- Missão -->
+        <div class="col-md-4">
+          <div class="card p-4 mb-4 bg-dark text-white border-0 h-100">
+            <div class="mb-3">
+              <i class="bi bi-bullseye fs-1 text-info"></i>
+            </div>
+            <h5 class="fw-bold">Nossa Missão</h5>
+            <p>Entregar soluções criativas e eficientes que superem as expectativas dos nossos clientes com qualidade e inovação.</p>
+          </div>
+        </div>
+  
+        <!-- Valores -->
+        <div class="col-md-4">
+          <div class="card p-4 mb-4 bg-dark text-white border-0 h-100">
+            <div class="mb-3">
+              <i class="bi bi-gem fs-1 text-info"></i>
+            </div>
+            <h5 class="fw-bold">Nossos Valores</h5>
+            <p>Compromisso com a excelência, respeito, integridade, criatividade e foco total na experiência do cliente.</p>
+          </div>
+        </div>
+  
+        <!-- Compromisso -->
+        <div class="col-md-4">
+          <div class="card p-4 mb-4 bg-dark text-white border-0 h-100">
+            <div class="mb-3">
+              <i class="bi bi-shield-check fs-1 text-info"></i>
+            </div>
+            <h5 class="fw-bold">Nosso Compromisso</h5>
+            <p>Oferecer serviços de alta qualidade, sempre com ética, transparência e responsabilidade em cada projeto.</p>
+          </div>
+        </div>
+  
+      </div>
+    </div>
+  </section>
+  
+  
+  <!-- Skills -->
+<section id="skills" class="py-5" style="background-color: #01111a; color: #fff;">
+    <div class="container">
+      <h2 class="section-title text-center mb-5 text-info fw-bold">Skills</h2>
+      <div class="row justify-content-center">
+        
+        <!-- Designer Gráfico -->
+        <div class="col-md-5 me-md-4">
+          <h4 class="mb-4 text-info">Designer Gráfico</h4>
+          <div class="skills-list position-relative ps-4">
+            <div class="skill-item">
+              <div class="skill-bullet"></div>
+              <span>Illustrator</span>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 80%;"></div>
+              </div>
+              <span class="skill-percent">80%</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-bullet"></div>
+              <span>Photoshop</span>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 90%;"></div>
+              </div>
+              <span class="skill-percent">90%</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-bullet"></div>
+              <span>InDesign</span>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 60%;"></div>
+              </div>
+              <span class="skill-percent">60%</span>
+            </div>
+          </div>
+        </div>
+  
+        <!-- Desenvolvedor Web -->
+        <div class="col-md-5 ms-md-4 mt-5 mt-md-0">
+          <h4 class="mb-4 text-info">Desenvolvedor Web</h4>
+          <div class="skills-list position-relative ps-4">
+            <div class="skill-item">
+              <div class="skill-bullet"></div>
+              <span>HTML</span>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 60%;"></div>
+              </div>
+              <span class="skill-percent">60%</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-bullet"></div>
+              <span>CSS</span>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 50%;"></div>
+              </div>
+              <span class="skill-percent">50%</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-bullet"></div>
+              <span>JavaScript</span>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 20%;"></div>
+              </div>
+              <span class="skill-percent">20%</span>
+            </div>
+            <div class="skill-item">
+              <div class="skill-bullet"></div>
+              <span>Bootstrap</span>
+              <div class="skill-bar">
+                <div class="skill-fill" style="width: 30%;"></div>
+              </div>
+              <span class="skill-percent">30%</span>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+
+
+    <!-- Portfólio com Carousel -->
+    <section id="portfolio" class="py-5">
+        <div class="container">
+            <h2 class="section-title text-center mb-5">Portfólio</h2>
+
+            <div id="portfolioCarousel" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-inner">
+
+                    <!-- Slide 1 -->
+                    <div class="carousel-item active">
+                        <img src="vet.png" class="d-block w-100 rounded" alt="Projeto 1">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 class="fw-bold">Mais Vet Consultoria</h5>
+                            <p>É uma clinica vitérinaria de Moçambique que eu densevolvi o site</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="carousel-item">
+                        <img src="vet2.png" class="d-block w-100 rounded" alt="Projeto 2">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 class="fw-bold">Time do Futebol</h5>
+                            <p>É um site que eu densevolvi na escola um dos trabalhos da escola</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="carousel-item">
+                        <img src="vet3.png" class="d-block w-100 rounded" alt="Projeto 3">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 class="fw-bold">Beth Security</h5>
+                            <p>É uma agência de segurança moçambicana que eu densevolvi o site para eles</p>
+                        </div>
+                    </div>
+
+                    <!-- Slide 4 -->
+                    <div class="carousel-item">
+                        <img src="vet4.png" class="d-block w-100 rounded" alt="Projeto 4">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5 class="fw-bold">EM Seguros</h5>
+                            <p>É uma agência de seguros moçambicana que eu densevolvi o site deles.</p>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <!-- Controles -->
+                <button class="carousel-control-prev" type="button" data-bs-target="#portfolioCarousel"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon"></span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#portfolioCarousel"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon"></span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+
+  <!-- Contato -->
+<section id="contato" class="py-5" style="background-color: #052334; color: #fff;">
+    <div class="container">
+      <h2 class="section-title text-center mb-4">Contato</h2>
+      <p class="text-center mb-5">Entre em contato pelas redes sociais, envie uma mensagem, ou baixe meu CV abaixo.</p>
+  
+      <div class="row text-center text-md-start">
+        <!-- Baixar CV -->
+        <div class="col-md-4 mb-4">
+          <h5><i class="bi bi-file-earmark-person-fill text-info me-2"></i>Baixar Meu CV</h5>
+          <a href="https://drive.google.com/file/d/1TLFPHhCQ0Ro8Jehyo97SOnb-c-F979-u/view?usp=sharing" download class="btn btn-info btn-sm">
+            <i class="bi bi-download me-1"></i> Download CV
+          </a>
+        </div>
+  
+        <!-- Contatos -->
+        <div class="col-md-4 mb-4">
+          <h5><i class="bi bi-telephone-fill text-info me-2"></i>Contatos</h5>
+          <ul class="list-unstyled">
+            <li><i class="bi bi-envelope-fill me-2"></i><a href="mailto:edmilson@ltsmoz.com" class="text-white">edmilson@ltsmoz.com</a></li>
+            <li><i class="bi bi-phone-fill me-2"></i><a href="tel:+258871999285" class="text-white">+258 85 199 9285</a></li>
+            <li><i class="bi bi-whatsapp me-2"></i><a href="wa.me/258851999285" target="_blank" class="text-white">WhatsApp</a></li>
+          </ul>
+        </div>
+  
+        <!-- Localização -->
+        <div class="col-md-4 mb-4">
+          <h5><i class="bi bi-geo-alt-fill text-info me-2"></i>Localização</h5>
+          <p>Maputo, Moçambique</p>
+          <a href="https://maps.app.goo.gl/2zqFEoxCTeFw87yR8" target="_blank" class="text-white text-decoration-underline">
+            Ver no Google Maps
+          </a>
+        </div>
+      </div>
+  
+      <!-- Redes sociais -->
+      <div class="social-icons text-center mt-4">
+        <a href="https://www.linkedin.com/in/edmilson-lu%C3%ADs-manhi%C3%A7a-30ba05280?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank" class="text-white mx-2 fs-4"><i class="bi bi-linkedin"></i></a>
+        <a href="https://www.facebook.com/share/16fjCxCmrU/?mibextid=wwXIfr" target="_blank" class="text-white mx-2 fs-4"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/dinhos_designer?igsh=a2VnbjU2YW1zdm04&utm_source=qr" target="_blank" class="text-white mx-2 fs-4"><i class="bi bi-instagram"></i></a>
+        <a href="wa.me/258851999285" target="_blank" class="text-white mx-2 fs-4"><i class="bi bi-whatsapp"></i></a>
+        <a href="https://github.com/edmilsonmanhic" target="_blank" class="text-white mx-2 fs-4"><i class="bi bi-github"></i></a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Rodapé -->
+  <footer class="bg-dark text-center text-white py-3">
+    <p class="mb-0">&copy; 2025 Edmilson Manhiça. Todos os direitos reservados.</p>
+  </footer>
+  
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simular digitação no parágrafo
+        document.addEventListener("DOMContentLoaded", () => {
+            const el = document.querySelector(".typing-text");
+            const text = el.getAttribute("data-text");
+            el.textContent = ""; // Limpa o conteúdo original
+            let i = 0;
+
+            setTimeout(() => {
+                const interval = setInterval(() => {
+                    el.textContent += text[i];
+                    i++;
+                    if (i >= text.length) {
+                        clearInterval(interval);
+                        el.style.borderRight = "none"; // remove o cursor depois
+                    }
+                }, 50);
+            }, 1000); // Delay para começar após o título
+        });
+    </script>
+</body>
+
+</html>

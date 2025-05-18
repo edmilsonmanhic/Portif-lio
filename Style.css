@@ -1,0 +1,93 @@
+/* Geral */
+body {
+    background-color: #031a2f;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 56px; /* navbar fixa altura */
+  }
+  
+  /* Hero - imagem de fundo + formulário lado esquerdo */
+  .hero {
+    position: relative;
+    background-image: url('backmy.png');
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: contain; /* ou cover, conforme preferir */
+    height: 400px; /* ajuste conforme desejar */
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* alinhado à esquerda */
+    padding-left: 50px; /* espaço do lado esquerdo */
+    color: white;
+  }
+  
+  .form-overlay {
+    background-color: rgba(0, 0, 0, 0.5); /* fundo preto translúcido para destacar o formulário */
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 400px;
+    width: 100%;
+  }
+  
+  .form-overlay input.form-control,
+  .form-overlay button.btn {
+    font-size: 1.1rem;
+    padding: 10px 12px;
+    width: 100%;
+    border-radius: 6px;
+  }
+  
+  .form-overlay button.btn {
+    margin-top: 15px;
+  }
+  
+  
+  /* Títulos */
+  .section-title {
+    font-weight: 700;
+    margin-bottom: 25px;
+    color: #eee;
+  }
+  
+  /* Lista de skills */
+  ul {
+    list-style-type: disc;
+    padding-left: 20px;
+  }
+  
+  /* Botão customizado para portfólio (exemplo) */
+  .btn-cta {
+    background-color: #0d6efd;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-cta:hover {
+    background-color: #0b5ed7;
+  }
+  
+  /* Ícones sociais */
+  .social-icons a {
+    font-size: 1.5rem;
+    margin-right: 15px;
+    color: #eee;
+    transition: color 0.3s ease;
+  }
+  
+  .social-icons a:hover {
+    color: #0d6efd;
+  }
+  
+  /* Card serviços */
+  .card {
+    background-color: #0a2c52;
+    color: #ddd;
+    border: none;
+  }
+  
+  /* Footer */
+  footer {
+    font-size: 0.9rem;
+  }
+  
